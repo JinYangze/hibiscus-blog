@@ -1,15 +1,11 @@
 package gold.hibiscus.blog.presentation.rest.blog;
 
 import gold.hibiscus.blog.application.blog.ArticleService;
-import gold.hibiscus.blog.presentation.rest.blog.vo.PageParams;
 import gold.hibiscus.blog.presentation.rest.util.Result;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
- * 功能描述
+ * article controller
  *
  * @author Jinyang
  * @since 2023-06-20
@@ -23,8 +19,13 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
-    @GetMapping("v1/articles")
-    public Result<?> queryArticles(@RequestBody PageParams pageParams) {
-        return articleService.queryArticles(pageParams);
+    @GetMapping("v1/article/list")
+    public Result<?> queryArticleList(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "20") Integer pageSize) {
+        return articleService.queryArticleList(page, pageSize);
+    }
+
+    @GetMapping("v1/article/{id}")
+    public Result<?> queryArticle(@PathVariable String id) {
+        return articleService.queryArticle(id);
     }
 }

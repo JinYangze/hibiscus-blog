@@ -1,7 +1,7 @@
 package gold.hibiscus.blog.presentation.rest.util;
 
 /**
- * 功能描述
+ * api response structure
  *
  * @author Jinyang
  * @since 2023-06-20
@@ -15,6 +15,18 @@ public class Result<T> {
         this.data = data;
         this.code = code;
         this.message = message;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     public static <T> Result<T> success(T data) {

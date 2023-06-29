@@ -1,12 +1,6 @@
-server:
-  port: 8099
 spring:
-  application:
-    name: hibiscus-blog
   datasource:
     url:  jdbc:mysql://127.0.0.1:3306/blog?characterEncoding=UTF-8&serverTimezone=UTC
     username: xxx
     password: xxx
     driver-class-name: com.mysql.cj.jdbc.Driver
-mybatis:
-  mapper-locations: classpath*:mapper/*Mapper.xml
