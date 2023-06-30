@@ -1,7 +1,12 @@
 package gold.hibiscus.blog.presentation.rest.blog;
 
 import gold.hibiscus.blog.application.blog.ArticleService;
+import gold.hibiscus.blog.presentation.rest.blog.vo.PageParams;
 import gold.hibiscus.blog.presentation.rest.util.Result;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/")
+@Tag(name = "Article", description = "Blog Article API")
 public class ArticleController {
     private final ArticleService articleService;
 
@@ -20,11 +26,15 @@ public class ArticleController {
     }
 
     @GetMapping("v1/article/list")
-    public Result<?> queryArticleList(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "20") Integer pageSize) {
-        return articleService.queryArticleList(page, pageSize);
+    @Operation(summary = "Query Article List", parameters = {@Parameter(name = "pageParams", description = "Page Params")})
+    @ApiResponse(responseCode = "200", description = "Query article list successfully, return article list")
+    public Result<?> queryArticleList(@ModelAttribute PageParams pageParams) {
+        return articleService.queryArticleList(pageParams);
     }
 
     @GetMapping("v1/article/{id}")
+    @Operation(summary = "Query Article", parameters = {@Parameter(name = "id", description = "Article ID")})
+    @ApiResponse(responseCode = "200", description = "Query article successfully, return article object")
     public Result<?> queryArticle(@PathVariable String id) {
         return articleService.queryArticle(id);
     }
