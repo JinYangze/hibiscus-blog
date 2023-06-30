@@ -1,4 +1,4 @@
-package gold.hibiscus.blog.presentation.rest.util;
+package gold.hibiscus.blog.domain.util;
 
 
 import cn.hutool.core.lang.Snowflake;

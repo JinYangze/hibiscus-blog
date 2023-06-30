@@ -1,7 +1,7 @@
 package gold.hibiscus.blog.presentation.rest.blog;
 
 import gold.hibiscus.blog.application.blog.ArticleService;
-import gold.hibiscus.blog.presentation.rest.blog.vo.PageParams;
+import gold.hibiscus.blog.presentation.rest.blog.vo.PageRequest;
 import gold.hibiscus.blog.presentation.rest.util.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -26,10 +26,10 @@ public class ArticleController {
     }
 
     @GetMapping("v1/article/list")
-    @Operation(summary = "Query Article List", parameters = {@Parameter(name = "pageParams", description = "Page Params")})
+    @Operation(summary = "Query Article List", parameters = {@Parameter(name = "pageRequest", description = "Page Params")})
     @ApiResponse(responseCode = "200", description = "Query article list successfully, return article list")
-    public Result<?> queryArticleList(@ModelAttribute PageParams pageParams) {
-        return articleService.queryArticleList(pageParams);
+    public Result<?> queryArticleList(@ModelAttribute PageRequest pageRequest) {
+        return articleService.queryArticleList(pageRequest);
     }
 
     @GetMapping("v1/article/{id}")

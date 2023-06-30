@@ -1,5 +1,9 @@
 package gold.hibiscus.blog.domain.blog;
 
+import gold.hibiscus.blog.domain.util.SnowFlakeGenerator;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
 /**
@@ -7,86 +11,38 @@ import java.util.Date;
  *
  * @author daze
  */
+@Getter
+@Setter
 public class Article {
     private Long id;
     private String title;
-    private String content;
-    private String author;
-    private int likedCount;
-    private int dislikedCount;
-    private int visitedCount;
+    private String summary;
+    private long contentId;
+    private long authorId;
+    private long categoryId;
+    private int commentCount;
+
+    /**
+     * number of people who liked this article.
+     */
+    private int diggCount;
+    /**
+     * number of people who viewed this article.
+     */
+    private int viewCount;
+    /**
+     * whether this article is on top.
+     * 0: not on top, 1: on top.
+     */
+    private int isPinned;
     private Date createDate;
-    private Date modifyDate;
+    private Date updateDate;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
+    private void setId(Long id) {
+        if (id == null) {
+            this.id = SnowFlakeGenerator.nextId();
+            return;
+        }
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public int getLikedCount() {
-        return likedCount;
-    }
-
-    public void setLikedCount(int likedCount) {
-        this.likedCount = likedCount;
-    }
-
-    public int getDislikedCount() {
-        return dislikedCount;
-    }
-
-    public void setDislikedCount(int dislikedCount) {
-        this.dislikedCount = dislikedCount;
-    }
-
-    public int getVisitedCount() {
-        return visitedCount;
-    }
-
-    public void setVisitedCount(int visitedCount) {
-        this.visitedCount = visitedCount;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getModifyDate() {
-        return modifyDate;
-    }
-
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
     }
 }

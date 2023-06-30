@@ -6,25 +6,25 @@ package gold.hibiscus.blog.presentation.rest.blog.vo;
  * @author Jinyang
  * @since 2023-06-20
  */
-public class PageParams {
-    private Integer page = 1;
+public class PageRequest {
+    private Integer pageNum = 1;
     private Integer pageSize = 10;
 
-    public int getPage() {
-        return page;
+    public int getPageNum() {
+        return pageNum;
     }
 
     /**
      * When the 'page' is empty or less than 1, set a default value of 1.
      *
-     * @param page current page number
+     * @param pageNum current page number
      */
-    public void setPage(Integer page) {
-        if (page == null || page < 1) {
-            this.page = 1;
+    public void setPageNum(Integer pageNum) {
+        if (pageNum == null || pageNum < 1) {
+            this.pageNum = 1;
             return;
         }
-        this.page = page;
+        this.pageNum = pageNum;
     }
 
     public int getPageSize() {
