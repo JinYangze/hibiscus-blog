@@ -14,6 +14,8 @@ import java.util.Date;
 @Getter
 @Setter
 public class Article {
+    public static final int ARTICLE_PINNED = 1;
+    public static final int ARTICLE_NOT_PINNED = 0;
     private Long id;
     private String title;
     private String summary;
@@ -21,7 +23,6 @@ public class Article {
     private long authorId;
     private long categoryId;
     private int commentCount;
-
     /**
      * number of people who liked this article.
      */

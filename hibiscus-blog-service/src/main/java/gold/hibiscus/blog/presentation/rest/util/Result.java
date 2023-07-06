@@ -1,11 +1,14 @@
 package gold.hibiscus.blog.presentation.rest.util;
 
+import lombok.Getter;
+
 /**
  * api response structure
  *
  * @author Jinyang
  * @since 2023-06-20
  */
+@Getter
 public class Result<T> {
     private final T data;
     private final int code;
@@ -17,23 +20,11 @@ public class Result<T> {
         this.message = message;
     }
 
-    public T getData() {
-        return data;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
     public static <T> Result<T> success(T data) {
         return new Result<>(200, "success", data);
     }
 
-    public static <T> Result<T> failure(int code, String message) {
-        return new Result<>(code, message, null);
+    public static <T> Result<T> failure(ResultCode resultCode) {
+        return new Result<>(resultCode.getCode(), resultCode.getMessage(), null);
     }
 }

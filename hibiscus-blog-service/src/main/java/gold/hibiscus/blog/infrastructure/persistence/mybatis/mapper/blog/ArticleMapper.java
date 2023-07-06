@@ -13,4 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ArticleMapper {
     Page<Article> queryArticleList();
+
+    Article queryArticleById(Long id);
 }

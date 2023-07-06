@@ -35,7 +35,7 @@ public class ArticleController {
     @GetMapping("v1/article/{id}")
     @Operation(summary = "Query Article", parameters = {@Parameter(name = "id", description = "Article ID")})
     @ApiResponse(responseCode = "200", description = "Query article successfully, return article object")
-    public Result<?> queryArticle(@PathVariable String id) {
+    public Result<?> queryArticle(@PathVariable Long id) {
         return articleService.queryArticle(id);
     }
 }

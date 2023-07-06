@@ -29,4 +29,20 @@
                update_date
         FROM article
     </select>
+    <select id="queryArticleById" resultMap="articleMap">
+        SELECT id,
+               title,
+               summary,
+               author_id,
+               content_id,
+               category_id,
+               comment_count,
+               view_count,
+               digg_count,
+               is_pinned,
+               create_date,
+               update_date
+        FROM article
+        WHERE id = #{id}
+    </select>
 </mapper>

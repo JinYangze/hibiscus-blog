@@ -1,0 +1,12 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gold.hibiscus.blog.infrastructure.persistence.mybatis.mapper.blog.ArticleContentMapper">
+    <resultMap id="articleContentMap" type="gold.hibiscus.blog.domain.blog.ArticleContent">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="html_content" property="htmlContent"/>
+    </resultMap>
+    <select id="queryArticleContentById" resultMap="articleContentMap">
+        SELECT id, content, html_content
+        FROM article_content where id = #{id}
+    </select>
+</mapper>
