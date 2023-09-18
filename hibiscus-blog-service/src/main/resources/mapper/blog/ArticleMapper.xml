@@ -45,4 +45,20 @@
         FROM article
         WHERE id = #{id}
     </select>
+    <select id="queryHotArticleList" resultMap="articleMap">
+        SELECT id,
+               title,
+               summary,
+               author_id,
+               content_id,
+               category_id,
+               comment_count,
+               view_count,
+               digg_count,
+               is_pinned,
+               create_date,
+               update_date
+        FROM article
+        ORDER BY view_count DESC limit #{limit}
+    </select>
 </mapper>

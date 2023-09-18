@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * article controller
+ * article controller.
  *
  * @author Jinyang
  * @since 2023-06-20
@@ -37,5 +37,12 @@ public class ArticleController {
     @ApiResponse(responseCode = "200", description = "Query article successfully, return article object")
     public Result<?> queryArticle(@PathVariable Long id) {
         return articleService.queryArticle(id);
+    }
+
+    @GetMapping("v1/article/hot")
+    @Operation(summary = "Query Hot Articles", parameters = {@Parameter(name = "limit", description = "Limit Size")})
+    @ApiResponse(responseCode = "200", description = "Query hot articles successfully, return article list")
+    public Result<?> queryHotArticle(@Parameter(name = "limit") Integer limit) {
+        return articleService.queryHotArticle(limit);
     }
 }

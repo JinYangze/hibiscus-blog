@@ -15,6 +15,8 @@ import gold.hibiscus.blog.presentation.rest.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Article Service
  *
@@ -46,5 +48,10 @@ public class ArticleService {
         ArticleContent content = articleContentMapper.queryArticleContentById(article.getContentId());
         Category category = categoryMapper.queryCategoryById(article.getCategoryId());
         return Result.success(new ArticleVo(article, content, category));
+    }
+
+    public Result<?> queryHotArticle(Integer limit) {
+        List<Article> articles = articleMapper.queryHotArticleList(limit);
+        return Result.success(articles);
     }
 }
