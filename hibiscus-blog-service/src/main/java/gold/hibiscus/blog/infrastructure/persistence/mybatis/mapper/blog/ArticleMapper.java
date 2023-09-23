@@ -19,4 +19,6 @@ public interface ArticleMapper {
     Article queryArticleById(Long id);
 
     List<Article> queryHotArticleList(Integer limit);
+
+    List<Article> queryNewArticleList(Integer limit);
 }

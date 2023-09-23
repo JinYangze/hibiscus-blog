@@ -45,6 +45,9 @@ public class ArticleService {
 
     public Result<?> queryArticle(Long id) {
         Article article = articleMapper.queryArticleById(id);
+        if (article == null) {
+            return Result.success(null);
+        }
         ArticleContent content = articleContentMapper.queryArticleContentById(article.getContentId());
         Category category = categoryMapper.queryCategoryById(article.getCategoryId());
         return Result.success(new ArticleVo(article, content, category));
@@ -52,6 +55,11 @@ public class ArticleService {
 
     public Result<?> queryHotArticle(Integer limit) {
         List<Article> articles = articleMapper.queryHotArticleList(limit);
+        return Result.success(articles);
+    }
+
+    public Result<?> queryNewArticle(Integer limit) {
+        List<Article> articles = articleMapper.queryNewArticleList(limit);
         return Result.success(articles);
     }
 }

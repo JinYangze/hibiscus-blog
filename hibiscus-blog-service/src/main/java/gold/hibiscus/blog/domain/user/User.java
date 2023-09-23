@@ -1,7 +1,11 @@
 package gold.hibiscus.blog.domain.user;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 用户
@@ -9,35 +13,20 @@ import jakarta.validation.constraints.NotNull;
  * @author Jinyang
  * @since 2023-06-05
  */
-public class User {
+@Setter
+@Getter
+public class User implements Serializable {
     private long id;
 
-    @NotEmpty(message = "用户名不能为空")
     private String username;
 
     private String password;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public Map<String, String> toUserMap() {
+        Map<String, String> map = new HashMap<>(3);
+        map.put("id", String.valueOf(id));
+        map.put("username", username);
+        map.put("password", password);
+        return map;
     }
 }
