@@ -33,8 +33,15 @@ public class UserController {
 
     @GetMapping("v1/user/current")
     @Operation(summary = "Query Current User")
-    @ApiResponse(responseCode = "200", description = "Query current user successfully, return user info")
+    @ApiResponse(responseCode = "200", description = "Query current user successfully, return user info.")
     public Result<?> getCurrentUser(@RequestHeader("Authorization") String token) {
         return userService.queryUserByToken(token);
+    }
+
+    @GetMapping("v1/user/logout")
+    @Operation(summary = "User Logout")
+    @ApiResponse(responseCode = "200", description = "User logout successfully.")
+    public Result<?> logout(@RequestHeader("Authorization") String token) {
+        return userService.logout(token);
     }
 }

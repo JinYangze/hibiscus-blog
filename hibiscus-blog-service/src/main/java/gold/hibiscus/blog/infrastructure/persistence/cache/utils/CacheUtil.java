@@ -36,6 +36,11 @@ public class CacheUtil {
         return cache.get(key, clazz);
     }
 
+    public void delete(String key) {
+        initCache();
+        cache.evict(key);
+    }
+
     private void initCache() {
         if (cache == null) {
             cache = cacheManager.getCache(cacheName);

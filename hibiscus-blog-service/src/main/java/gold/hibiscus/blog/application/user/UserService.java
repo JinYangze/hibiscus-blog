@@ -45,7 +45,7 @@ public class UserService {
             return Result.failure(ResultCode.ACCOUNT_PWD_NOT_EXIST);
         }
         // Login is successful, token is generated, and saved in redis
-        String token = JwtUtil.createToken(user.toUserMap());
+        String token = JwtUtil.createToken("id", String.valueOf(user.getId()));
         cacheUtil.set(token, user);
         return Result.success(token);
     }
@@ -61,5 +61,10 @@ public class UserService {
             return Result.failure(ResultCode.NO_LOGIN);
         }
         return Result.success(new UserResponse(user));
+    }
+
+    public Result<?> logout(String token) {
+        cacheUtil.delete(token);
+        return Result.success(null);
     }
 }

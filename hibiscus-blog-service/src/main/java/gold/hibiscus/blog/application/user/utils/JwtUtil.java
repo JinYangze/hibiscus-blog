@@ -27,12 +27,13 @@ public class JwtUtil {
     /**
      * Generate token.
      *
-     * @param payload payload
+     * @param name key
+     * @param value value
      * @return token
      */
-    public static String createToken(Map<String, String> payload) {
+    public static String createToken(String name, String value) {
         JWTCreator.Builder builder = JWT.create();
-        payload.forEach(builder::withClaim);
+        builder.withClaim(name, value);
         // 设置有效期
         Calendar instance = Calendar.getInstance();
         instance.add(Calendar.DATE, INVALID_TIME);
