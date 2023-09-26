@@ -3,8 +3,8 @@ package gold.hibiscus.blog.application.user;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import gold.hibiscus.blog.application.user.utils.JwtUtil;
 import gold.hibiscus.blog.domain.user.User;
-import gold.hibiscus.blog.infrastructure.persistence.cache.utils.CacheUtil;
-import gold.hibiscus.blog.infrastructure.persistence.mybatis.mapper.user.UserMapper;
+import gold.hibiscus.blog.domain.user.UserRepository;
+import gold.hibiscus.blog.infrastructure.persistence.utils.CacheUtil;
 import gold.hibiscus.blog.presentation.rest.user.vo.LoginParam;
 import gold.hibiscus.blog.presentation.rest.user.vo.UserResponse;
 import gold.hibiscus.blog.presentation.rest.util.Result;
@@ -24,14 +24,14 @@ import org.springframework.util.StringUtils;
 public class UserService {
     private static final String SALT = "mszlu!@#";
 
-    private final UserMapper userMapper;
-
     private final CacheUtil cacheUtil;
 
+    private final UserRepository userRepository;
+
     @Autowired
-    public UserService(UserMapper userMapper, CacheUtil cacheUtil) {
-        this.userMapper = userMapper;
+    public UserService(CacheUtil cacheUtil, UserRepository userRepository) {
         this.cacheUtil = cacheUtil;
+        this.userRepository = userRepository;
     }
 
     public Result<?> login(LoginParam loginParam) {
@@ -40,7 +40,7 @@ public class UserService {
         if (!StringUtils.hasText(username) || !StringUtils.hasText(password)) {
             return Result.failure(ResultCode.PARAMS_ERROR);
         }
-        User user = userMapper.queryUser(username, DigestUtils.md5Hex(password + SALT));
+        User user = userRepository.queryUser(username, DigestUtils.md5Hex(password + SALT));
         if (user == null) {
             return Result.failure(ResultCode.ACCOUNT_PWD_NOT_EXIST);
         }

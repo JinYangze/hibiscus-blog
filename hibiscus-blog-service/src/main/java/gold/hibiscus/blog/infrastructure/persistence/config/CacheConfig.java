@@ -1,4 +1,4 @@
-package gold.hibiscus.blog.infrastructure.persistence.cache;
+package gold.hibiscus.blog.infrastructure.persistence.config;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.beans.factory.annotation.Value;

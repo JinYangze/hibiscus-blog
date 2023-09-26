@@ -1,4 +1,4 @@
-package gold.hibiscus.blog.infrastructure.persistence.mybatis.config;
+package gold.hibiscus.blog.infrastructure.persistence.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +10,6 @@ import org.springframework.context.annotation.Configuration;
  * @since 2023-06-19
  */
 @Configuration
-@MapperScan("gold.hibiscus.blog.infrastructure.persistence.mybatis.mapper")
+@MapperScan("gold.hibiscus.blog.infrastructure.persistence.*")
 public class MybatisConfiguration {
 }

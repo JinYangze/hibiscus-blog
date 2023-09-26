@@ -1,4 +1,4 @@
-package gold.hibiscus.blog.infrastructure.persistence.mybatis.mapper.user;
+package gold.hibiscus.blog.infrastructure.persistence.user.mapper;
 
 import gold.hibiscus.blog.domain.user.User;
 import org.apache.ibatis.annotations.Mapper;

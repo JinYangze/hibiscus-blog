@@ -1,20 +1,18 @@
-package gold.hibiscus.blog.infrastructure.persistence.mybatis.mapper.blog;
+package gold.hibiscus.blog.domain.blog.repository;
 
 import com.github.pagehelper.Page;
 import gold.hibiscus.blog.domain.blog.Article;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
- * Article Mapper.
+ * Article Repository.
  *
  * @author Jinyang
- * @since 2023-06-20
+ * @since 2023-09-26
  */
-@Mapper
-public interface ArticleMapper {
-    Page<Article> queryArticleList();
+public interface ArticleRepository {
+    Page<Article> queryArticleList(int pageNum, int pageSize);
 
     Article queryArticleById(Long id);
 

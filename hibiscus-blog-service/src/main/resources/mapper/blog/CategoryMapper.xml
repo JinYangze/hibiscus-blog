@@ -1,5 +1,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="gold.hibiscus.blog.infrastructure.persistence.mybatis.mapper.blog.CategoryMapper">
+<mapper namespace="gold.hibiscus.blog.infrastructure.persistence.blog.mapper.CategoryMapper">
     <resultMap id="categoryMap" type="gold.hibiscus.blog.domain.blog.Category">
         <id column="id" property="id"/>
         <result column="name" property="name"/>

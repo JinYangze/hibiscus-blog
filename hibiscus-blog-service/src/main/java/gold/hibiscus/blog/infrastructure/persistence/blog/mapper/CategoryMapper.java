@@ -1,4 +1,4 @@
-package gold.hibiscus.blog.infrastructure.persistence.mybatis.mapper.blog;
+package gold.hibiscus.blog.infrastructure.persistence.blog.mapper;
 
 import gold.hibiscus.blog.domain.blog.Category;
 import org.apache.ibatis.annotations.Mapper;

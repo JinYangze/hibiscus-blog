@@ -1,4 +1,4 @@
-package gold.hibiscus.blog.infrastructure.persistence.redis.util;
+package gold.hibiscus.blog.infrastructure.persistence.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

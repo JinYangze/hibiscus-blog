@@ -1,4 +1,4 @@
-package gold.hibiscus.blog.infrastructure.persistence.mybatis.mapper.blog;
+package gold.hibiscus.blog.infrastructure.persistence.blog.mapper;
 
 import gold.hibiscus.blog.domain.blog.ArticleContent;
 import org.apache.ibatis.annotations.Mapper;
@@ -11,7 +11,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ArticleContentMapper {
-
         /**
         * query article content by id
         *
