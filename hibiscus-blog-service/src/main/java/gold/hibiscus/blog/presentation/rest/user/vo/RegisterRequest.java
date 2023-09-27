@@ -4,15 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Login request parameters.
+ * Register request parameters.
  *
- * @author Jinyang
- * @since 2023-09-19
+ * @author YangJinyang
+ * @since 2023-09-25
  */
-@Getter
 @Setter
-public class LoginParam {
+@Getter
+public class RegisterRequest {
     private String username;
-
     private String password;
+    private String nickname;
 }

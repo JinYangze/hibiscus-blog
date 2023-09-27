@@ -11,5 +11,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper {
+    boolean saveUser(User user);
+
     User queryUser(String username, String password);
+
+    User queryUserByUsername(String username);
 }

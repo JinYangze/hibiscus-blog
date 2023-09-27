@@ -22,7 +22,17 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public boolean saveUser(User user) {
+        return mapper.saveUser(user);
+    }
+
+    @Override
     public User queryUser(String username, String password) {
         return mapper.queryUser(username, password);
+    }
+
+    @Override
+    public User queryUserByUsername(String username) {
+        return mapper.queryUserByUsername(username);
     }
 }

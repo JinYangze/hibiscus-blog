@@ -9,6 +9,8 @@ spring:
     name: hibiscus-blog
 mybatis:
   mapper-locations: classpath*:mapper/*/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 pagehelper:
   helper-dialect: mysql
   reasonable: true

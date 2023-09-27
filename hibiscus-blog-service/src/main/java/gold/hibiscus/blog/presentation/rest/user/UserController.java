@@ -1,7 +1,8 @@
 package gold.hibiscus.blog.presentation.rest.user;
 
 import gold.hibiscus.blog.application.user.UserService;
-import gold.hibiscus.blog.presentation.rest.user.vo.LoginParam;
+import gold.hibiscus.blog.presentation.rest.user.vo.LoginRequest;
+import gold.hibiscus.blog.presentation.rest.user.vo.RegisterRequest;
 import gold.hibiscus.blog.presentation.rest.util.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -24,11 +25,18 @@ public class UserController {
         this.userService = userService;
     }
 
+    @PostMapping("v1/user/register")
+    @Operation(summary = "User Register")
+    @ApiResponse(responseCode = "200", description = "User register successfully, return user token.")
+    public Result<?> register(@RequestBody RegisterRequest registerRequest) {
+        return userService.register(registerRequest);
+    }
+
     @PostMapping("v1/user/login")
     @Operation(summary = "User Login")
     @ApiResponse(responseCode = "200", description = "User login successfully, return user token.")
-    public Result<?> login(@RequestBody LoginParam loginParam) {
-        return userService.login(loginParam);
+    public Result<?> login(@RequestBody LoginRequest loginRequest) {
+        return userService.login(loginRequest);
     }
 
     @GetMapping("v1/user/current")

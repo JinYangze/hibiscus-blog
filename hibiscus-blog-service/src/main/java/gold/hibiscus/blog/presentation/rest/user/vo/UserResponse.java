@@ -11,11 +11,13 @@ import lombok.Getter;
  */
 @Getter
 public class UserResponse {
+    private final long id;
+    private final String username;
+    private final String nickname;
+
     public UserResponse(User user) {
         id = user.getId();
         username = user.getUsername();
+        nickname = user.getNickname();
     }
-
-    private final long id;
-    private final String username;
 }
