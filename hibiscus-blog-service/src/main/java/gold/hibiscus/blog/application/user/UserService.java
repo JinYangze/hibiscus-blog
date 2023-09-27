@@ -25,6 +25,7 @@ import org.springframework.util.StringUtils;
  * @since 2023-06-05
  */
 @Service
+@Transactional
 public class UserService {
     private static final String SALT = "mszlu!@#";
 
@@ -38,7 +39,6 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    @Transactional
     public Result<?> register(RegisterRequest registerRequest) {
         if (userRepository.queryUserByUsername(registerRequest.getUsername()) != null) {
             return Result.failure(ResultCode.USER_EXIST);
