@@ -1,6 +1,8 @@
 package gold.hibiscus.blog.presentation.rest.blog.vo;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import gold.hibiscus.blog.domain.blog.Article;
 import gold.hibiscus.blog.domain.blog.ArticleContent;
 import gold.hibiscus.blog.domain.blog.Category;
@@ -18,6 +20,7 @@ import java.util.Date;
 @Setter
 @Getter
 public class ArticleVo {
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
     private String title;
     private ArticleContent content;

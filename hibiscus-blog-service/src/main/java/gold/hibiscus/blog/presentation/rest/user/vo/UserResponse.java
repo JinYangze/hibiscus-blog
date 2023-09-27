@@ -1,5 +1,7 @@
 package gold.hibiscus.blog.presentation.rest.user.vo;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import gold.hibiscus.blog.domain.user.User;
 import lombok.Getter;
 
@@ -11,6 +13,7 @@ import lombok.Getter;
  */
 @Getter
 public class UserResponse {
+    @JsonSerialize(using = ToStringSerializer.class)
     private final long id;
     private final String username;
     private final String nickname;
